@@ -20,7 +20,7 @@ public class I_ShottingBullets : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		// z キーが押された時
-		if(Input.GetKeyDown (KeyCode.Z)){
+		if(Input.GetMouseButtonDown (0)){
 			// 弾丸の複製
 			GameObject bullets = GameObject.Instantiate(bullet)as GameObject;
 
