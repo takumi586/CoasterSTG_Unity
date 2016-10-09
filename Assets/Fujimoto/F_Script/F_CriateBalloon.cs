@@ -5,6 +5,7 @@ public class F_CriateBalloon : MonoBehaviour {
 
 	public GameObject Balloon;
 	public GameObject Vehicle;
+	public GameObject Target;
 	public float timeOut;
 	private float timeElapsed;
 	private Vector3 pos;
@@ -21,6 +22,7 @@ public class F_CriateBalloon : MonoBehaviour {
 			float z = Random.Range (-2.0f, 2.0f);
 			Vector3 pos = Vehicle.transform.position;
 			Instantiate (Balloon, new Vector3(pos.x + x, y, z), Quaternion.identity);
+			Instantiate (Target, new Vector3(pos.x - x, y, z), Quaternion.identity);
 			timeElapsed = 0.0f;
 		}
 	}
