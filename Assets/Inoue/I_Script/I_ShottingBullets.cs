@@ -3,33 +3,49 @@ using System.Collections;
 
 public class I_ShottingBullets : MonoBehaviour {
 
-	// bullet prefab
+	// prefab
 	public GameObject bullet;
+	private GameObject camera;
 
-	// 弾丸発射点
-	public Transform shotPoint;
-
-	// 弾丸の速度
+	// 発射スピード
 	public float speed = 1000;
+	// ショットフレーム
+	public int shotFlame = 60;
+	private int flame = 0;
 
-	// Use this for initialization
 	void Start () {
+		camera = transform.FindChild ("MainCamera").gameObject;
+		// 初期値を乱数で生成
+		flame = (int)Random.value % shotFlame;
+	}
+		
+	void Update () {
+		/*
+		if (!isLocalPlayer) {
+			return;
+		}
+		*/
 
+		flame++;
+		if (flame % shotFlame == 0) {
+			Shot ();
+			flame = 0;
+		}
+			
+		if(Input.GetKeyDown (KeyCode.Z)){
+			Shot ();
+		}
 	}
 
-	// Update is called once per frame
-	void Update () {
-		// z キーが押された時
-		if(Input.GetKeyDown (KeyCode.Z)){
-			// 弾丸の複製
-			GameObject bullets = GameObject.Instantiate(bullet)as GameObject;
+	// [Command]
+	void Shot() {
+		GameObject bullets = (GameObject)Instantiate(
+			bullet,
+			camera.transform.position - camera.transform.forward,
+			Quaternion.identity);
 
-			Vector3 force;
-			force = this.gameObject.transform.forward * speed;
-			// Rigidbodyに力を加えて発射
-			bullets.GetComponent<Rigidbody>().AddForce (force);
-			// 弾丸の位置を調整
-			bullets.transform.position = shotPoint.position;
-		}
+		bullets.GetComponent<Rigidbody>().velocity = camera.transform.forward*speed;
+
+		// NetworkServer.Spawn(bullets);
 	}
 }
