@@ -12,6 +12,8 @@ public class I_ShottingBullets : MonoBehaviour {
 	// ショットフレーム
 	public int shotFlame = 60;
 	private int flame = 0;
+	// 消滅時間
+	public float disappearanceTime;
 
 	void Start () {
 		camera = transform.FindChild ("MainCamera").gameObject;
@@ -47,5 +49,7 @@ public class I_ShottingBullets : MonoBehaviour {
 		bullets.GetComponent<Rigidbody>().velocity = camera.transform.forward*speed;
 
 		// NetworkServer.Spawn(bullets);
+
+		Destroy (bullets, disappearanceTime);
 	}
 }
