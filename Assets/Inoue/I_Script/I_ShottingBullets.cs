@@ -6,6 +6,8 @@ public class I_ShottingBullets : MonoBehaviour {
 	// prefab
 	public GameObject bullet;
 	private GameObject camera;
+	private GameObject tram;
+	private N_TramMove scN_TransMove;
 
 	// 効果音
 	public AudioClip shotSe;
@@ -20,6 +22,8 @@ public class I_ShottingBullets : MonoBehaviour {
 
 	void Start () {
 		camera = transform.FindChild ("MainCamera").gameObject;
+		tram = GameObject.Find ("N_Tram");
+		scN_TransMove = tram.GetComponent<N_TramMove>();
 		// 初期値を乱数で生成
 		flame = (int)Random.value % shotFlame;
 	}
@@ -51,7 +55,7 @@ public class I_ShottingBullets : MonoBehaviour {
 			camera.transform.position - camera.transform.forward,
 			Quaternion.identity);
 
-		bullets.GetComponent<Rigidbody>().velocity = camera.transform.forward*speed;
+		bullets.GetComponent<Rigidbody>().velocity = camera.transform.forward*speed + tram.transform.forward*scN_TransMove.speed;;
 
 		// NetworkServer.Spawn(bullets);
 
