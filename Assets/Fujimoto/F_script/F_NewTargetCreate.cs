@@ -13,11 +13,29 @@ public class F_NewTargetCreate : MonoBehaviour {
 	public int RareProbability;
 	private float timeElapsed;
 	private Vector3 pos;
+	private int Flag;
 
 	void Start(){
+		Flag = 0;
+	}
+		
+	void OnTriggerEnter(Collider other) {
+		if (other.gameObject.tag == "N_Tram") {
+			Flag = 1;
+		}
 	}
 
 	void Update(){
+		if (Flag == 1) {
+			TargetRandom();
+			Debug.Log ("通ったで", gameObject);
+		} else {
+			Debug.Log ("通る前やで", gameObject);
+		}
+	}
+
+	private void TargetRandom(){
+		
 		timeElapsed += Time.deltaTime;
 
 		if(timeElapsed >= TargetInterbal){
