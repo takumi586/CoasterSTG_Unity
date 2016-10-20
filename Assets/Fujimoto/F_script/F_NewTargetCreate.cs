@@ -21,15 +21,14 @@ public class F_NewTargetCreate : MonoBehaviour {
 		
 	void OnTriggerEnter(Collider other) {
 		if (other.gameObject.tag == "N_Tram") {
-			Flag = 1;
+				FlagUp ();
 		}
 	}
 
 	void Update(){
 		if (Flag == 1) {
-			TargetRandom();
-		} else {
-		}
+			TargetRandom ();
+		} 
 	}
 
 	private void TargetRandom(){
@@ -54,6 +53,14 @@ public class F_NewTargetCreate : MonoBehaviour {
 			}
 			timeElapsed = 0.0f;
 		}
+	}
+
+	public void FlagUp(){
+		Flag = 1;
+	}
+
+	public void FlagDown(){
+		Flag = 0;
 	}
 
 }
