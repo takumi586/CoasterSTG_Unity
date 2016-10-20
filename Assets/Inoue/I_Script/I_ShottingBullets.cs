@@ -25,7 +25,7 @@ public class I_ShottingBullets : MonoBehaviour {
 		tram = GameObject.Find ("N_Tram");
 		scN_TransMove = tram.GetComponent<N_TramMove>();
 		// 初期値を乱数で生成
-		flame = (int)Random.value % shotFlame;
+		// ** flame = (int)Random.value % shotFlame;
 	}
 		
 	void Update () {
@@ -34,14 +34,25 @@ public class I_ShottingBullets : MonoBehaviour {
 			return;
 		}
 		*/
-
+		/* ++
 		flame++;
 		if (flame % shotFlame == 0) {
 			Shot ();
 			flame = 0;
 		}
+		++ */
 			
 		if(Input.GetKeyDown (KeyCode.Z)){
+			Shot ();
+		}
+		// ここからボタン
+		if(Input.GetButtonDown ("Fire1")){
+			Shot ();
+		} else if(Input.GetButtonDown ("Fire2")){
+			Shot ();
+		} else if(Input.GetButtonDown ("Fire3")){
+			Shot ();
+		} else if(Input.GetButtonDown ("Jump")){
 			Shot ();
 		}
 	}
