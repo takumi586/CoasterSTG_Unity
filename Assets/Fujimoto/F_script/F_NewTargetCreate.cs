@@ -28,9 +28,7 @@ public class F_NewTargetCreate : MonoBehaviour {
 	void Update(){
 		if (Flag == 1) {
 			TargetRandom();
-			Debug.Log ("通ったで", gameObject);
 		} else {
-			Debug.Log ("通る前やで", gameObject);
 		}
 	}
 
