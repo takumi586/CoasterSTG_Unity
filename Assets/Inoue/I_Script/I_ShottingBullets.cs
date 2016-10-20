@@ -7,6 +7,9 @@ public class I_ShottingBullets : MonoBehaviour {
 	public GameObject bullet;
 	private GameObject camera;
 
+	// 効果音
+	public AudioClip shotSe;
+
 	// 発射スピード
 	public float speed = 1000;
 	// ショットフレーム
@@ -41,6 +44,8 @@ public class I_ShottingBullets : MonoBehaviour {
 
 	// [Command]
 	void Shot() {
+		AudioSource.PlayClipAtPoint (shotSe, transform.position);
+
 		GameObject bullets = (GameObject)Instantiate(
 			bullet,
 			camera.transform.position - camera.transform.forward,
