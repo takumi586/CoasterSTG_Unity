@@ -6,12 +6,11 @@ public class N_TramMove : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-	
+		this.GetComponent<Rigidbody>().velocity = this.transform.forward*speed;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		transform.Translate (0, 0, speed);
 	}
 }
 
