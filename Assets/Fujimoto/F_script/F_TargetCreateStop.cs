@@ -7,7 +7,7 @@ public class F_TargetCreateStop : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		t = GameObject.Find ("NF_Demo1020_2").GetComponent<F_NewTargetCreate> ();
+		// t = GameObject.Find ("NF_Demo1020_2").GetComponent<F_NewTargetCreate> ();
 	}
 
 	void OnTriggerEnter(Collider other) {
