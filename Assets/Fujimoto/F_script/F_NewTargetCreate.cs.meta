@@ -1,11 +1,11 @@
 fileFormatVersion: 2
 guid: c6204bf01a0b7a94d82b9acec624c930
-timeCreated: 1476800104
+timeCreated: 1477021394
 licenseType: Free
 MonoImporter:
   serializedVersion: 2
   defaultReferences:
-  - Vehicle: {instanceID: 0}
+  - Vehicle: {fileID: 1000013843340370, guid: 607083f2beba7d94f8f27408fc362f3c, type: 2}
   - Balloon: {fileID: 1000013693328600, guid: e4c27c32fef11d54c82a03fcf72a4ac9, type: 2}
   - Target: {fileID: 1000012779693000, guid: 9451326d06569ec408333ecd1f75c7da, type: 2}
   - BalloonRare: {fileID: 1000010448070880, guid: 1629b0c8df00ef94bb9487f00e2d326e,

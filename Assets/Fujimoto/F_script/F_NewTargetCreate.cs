@@ -61,6 +61,7 @@ public class F_NewTargetCreate : MonoBehaviour {
 
 	public void FlagDown(){
 		Flag = 0;
+		Debug.Log ("フラグダウン");
 	}
 
 }
