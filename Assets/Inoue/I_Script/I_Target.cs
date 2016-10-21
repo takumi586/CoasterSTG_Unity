@@ -10,7 +10,6 @@ public class I_Target : MonoBehaviour {
 
 	void Start() {
 		s = GameObject.Find ("ScoreDisplay").GetComponent<I_Score> ();
-		// Se = GetComponent<AudioSource> ();
 	}
 		
 	void OnTriggerEnter(Collider other) {
@@ -21,8 +20,8 @@ public class I_Target : MonoBehaviour {
 				s.subScore (-ScorePoint);
 			}
 			PlaySe ();
-			Debug.Log("se");
 			Destroy(this.gameObject);
+			Destroy (other.gameObject);
 		}
 	}
 

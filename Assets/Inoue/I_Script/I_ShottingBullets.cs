@@ -66,7 +66,7 @@ public class I_ShottingBullets : MonoBehaviour {
 			camera.transform.position - camera.transform.forward,
 			Quaternion.identity);
 
-		bullets.GetComponent<Rigidbody>().velocity = camera.transform.forward*speed + tram.transform.forward*scN_TransMove.speed;;
+		bullets.GetComponent<Rigidbody> ().velocity = camera.transform.forward * speed + tram.transform.forward*scN_TransMove.speed;;
 
 		// NetworkServer.Spawn(bullets);
 
