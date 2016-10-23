@@ -38,9 +38,9 @@ public class F_NewTargetCreate : MonoBehaviour {
 		timeElapsed += Time.deltaTime;
 
 		if(timeElapsed >= TargetInterbal){
-			float TargetX = Random.Range (-10.0f, 10.0f);
+			float TargetX = Random.Range (-20.0f, 20.0f);
 			float TargetY = Random.Range (5.5f, 7.5f);
-			float TargetZ = Random.Range (30.0f, -25.0f);
+			float TargetZ = Random.Range (-50.0f, 10.0f);
 			int TargetRand = Random.Range (1, 100);
 			int RareRand = Random.Range (1, 100);
 
