@@ -15,6 +15,8 @@ public class F_NewTargetCreate : MonoBehaviour {
 	private Vector3 pos;
 	private int Flag;
 
+	public float disappearanceTime;
+
 	void Start(){
 		Flag = 0;
 	}
@@ -46,9 +48,13 @@ public class F_NewTargetCreate : MonoBehaviour {
 				Vector3 pos = Vehicle.transform.position;
 				//Instantiate (Balloon, new Vector3 (pos.x + TargetX, TargetY, TargetZ), Quaternion.identity);
 				if(RareProbability - RareRand >= 0){
-					Instantiate (TargetRare, new Vector3 (pos.x + TargetX, TargetY, pos.z + TargetZ), Quaternion.identity);
+					GameObject obj = (GameObject)Instantiate
+						(TargetRare, new Vector3 (pos.x + TargetX, TargetY, pos.z + TargetZ), Quaternion.identity);
+					Destroy (obj, disappearanceTime);
 				}else{
-					Instantiate (Target, new Vector3 (pos.x + TargetX, TargetY, pos.z + TargetZ), Quaternion.identity);
+					GameObject obj2 = (GameObject)Instantiate 
+						(Target, new Vector3 (pos.x + TargetX, TargetY, pos.z + TargetZ), Quaternion.identity);
+					Destroy (obj2,disappearanceTime);
 				}
 			}
 			timeElapsed = 0.0f;
@@ -61,7 +67,7 @@ public class F_NewTargetCreate : MonoBehaviour {
 
 	public void FlagDown(){
 		Flag = 0;
-		Debug.Log ("フラグダウン");
+		//Debug.Log ("フラグダウン");
 	}
 
 }
