@@ -74,5 +74,4 @@ public class F_NewTargetCreate : MonoBehaviour {
 		Flag = 0;
 		//Debug.Log ("フラグダウン");
 	}
-
 }
