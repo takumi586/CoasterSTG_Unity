@@ -15,10 +15,12 @@ public class I_SpeedAdjustment : MonoBehaviour {
 	}
 		
 	void FixedUpdate () {
-		cnt++;
-		if (CollisionFlag && cnt >= flame) {
-			scN_TransMove.speed = this.speed;
-			Destroy(this.gameObject);
+		if (CollisionFlag) {
+			cnt++;
+			if (cnt >= flame) {
+				scN_TransMove.speed = this.speed;
+				Destroy (this.gameObject);
+			}
 		}
 	}
 
