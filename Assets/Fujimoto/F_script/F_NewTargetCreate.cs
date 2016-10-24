@@ -17,17 +17,22 @@ public class F_NewTargetCreate : MonoBehaviour {
 
 	public float disappearanceTime;
 
+	private F_Stage1TargetDestroy D;
+	public GameObject DestroyTarget;
+
 	void Start(){
 		Flag = 0;
+		D = DestroyTarget.GetComponent<F_Stage1TargetDestroy> ();
 	}
 		
 	void OnTriggerEnter(Collider other) {
 		if (other.gameObject.tag == "N_Tram") {
 				FlagUp ();
+			D.Target1Destroy ();
 		}
 	}
 
-	void Update(){
+	void FixedUpdate(){
 		if (Flag == 1) {
 			TargetRandom ();
 		} 
