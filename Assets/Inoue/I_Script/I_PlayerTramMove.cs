@@ -11,9 +11,8 @@ public class I_PlayerTramMove : MonoBehaviour {
 		scN_TransMove = tram.GetComponent<N_TramMove>();
 	}
 		
-	void Update () {
+	void FixedUpdate () {
 		// t = tram.GetComponent<transform> ();
 		this.GetComponent<Rigidbody>().velocity = tram.transform.forward*scN_TransMove.speed;
-		Debug.Log (scN_TransMove.speed);
 	}
 }
