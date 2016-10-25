@@ -12,7 +12,6 @@ public class N_TramMove : MonoBehaviour {
 	// Update is called once per frame
 	void FixedUpdate() {
 		this.GetComponent<Rigidbody>().velocity = this.transform.forward*speed;
-		Debug.Log (this.speed);
 	}
 }
 

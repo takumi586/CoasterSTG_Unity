@@ -7,6 +7,7 @@ public class I_Target : MonoBehaviour {
 
 	// 効果音
 	public AudioClip Se;
+	public float seVolume = 1;
 
 	void Start() {
 		s = GameObject.Find ("ScoreDisplay").GetComponent<I_Score> ();
@@ -26,6 +27,6 @@ public class I_Target : MonoBehaviour {
 	}
 
 	void PlaySe() {
-		AudioSource.PlayClipAtPoint (Se, transform.position);
+		AudioSource.PlayClipAtPoint (Se, transform.position, seVolume);
 	}
 }
