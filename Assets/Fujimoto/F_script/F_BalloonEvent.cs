@@ -35,11 +35,14 @@ public class F_BalloonEvent : MonoBehaviour {
 	}
 
 	public void BalloonCreate(){
+		Vector3 pos;
 
 		for (int i = 0; i < number; i++) {
 			float Angle = (float)360 / number;
+
 			transform.Rotate(new Vector3(0f,Angle,0f));
-			Vector3 pos = BalloonPoint.transform.position;
+			pos = BalloonPoint.transform.position;
+
 			Instantiate (Balloon, pos, Quaternion.identity);
 		}
 
