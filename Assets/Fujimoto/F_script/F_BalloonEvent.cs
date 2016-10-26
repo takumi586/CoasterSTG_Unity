@@ -10,6 +10,8 @@ public class F_BalloonEvent : MonoBehaviour {
 	public GameObject BalloonPoint2;
 	public int n1;
 	public int n2;
+	public float DestroyTime;
+
 
 	public void Start(){
 	}
@@ -37,6 +39,7 @@ public class F_BalloonEvent : MonoBehaviour {
 			Instantiate (Balloon, pos2, Quaternion.identity);
 		}
 		Destroy (gameObject);
+
 	}
 
 }
