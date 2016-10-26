@@ -15,17 +15,24 @@ public class F_NewTargetCreate : MonoBehaviour {
 	private Vector3 pos;
 	private int Flag;
 
+	public float disappearanceTime;
+
+	private F_Stage1TargetDestroy D;
+	public GameObject DestroyTarget;
+
 	void Start(){
 		Flag = 0;
+		D = DestroyTarget.GetComponent<F_Stage1TargetDestroy> ();
 	}
 		
 	void OnTriggerEnter(Collider other) {
 		if (other.gameObject.tag == "N_Tram") {
 				FlagUp ();
+			D.Target1Destroy ();
 		}
 	}
 
-	void Update(){
+	void FixedUpdate(){
 		if (Flag == 1) {
 			TargetRandom ();
 		} 
@@ -36,9 +43,9 @@ public class F_NewTargetCreate : MonoBehaviour {
 		timeElapsed += Time.deltaTime;
 
 		if(timeElapsed >= TargetInterbal){
-			float TargetX = Random.Range (-10.0f, 10.0f);
+			float TargetX = Random.Range (-20.0f, 20.0f);
 			float TargetY = Random.Range (5.5f, 7.5f);
-			float TargetZ = Random.Range (30.0f, -25.0f);
+			float TargetZ = Random.Range (-50.0f, 10.0f);
 			int TargetRand = Random.Range (1, 100);
 			int RareRand = Random.Range (1, 100);
 
@@ -46,9 +53,13 @@ public class F_NewTargetCreate : MonoBehaviour {
 				Vector3 pos = Vehicle.transform.position;
 				//Instantiate (Balloon, new Vector3 (pos.x + TargetX, TargetY, TargetZ), Quaternion.identity);
 				if(RareProbability - RareRand >= 0){
-					Instantiate (TargetRare, new Vector3 (pos.x + TargetX, TargetY, pos.z + TargetZ), Quaternion.identity);
+					GameObject obj = (GameObject)Instantiate
+						(TargetRare, new Vector3 (pos.x + TargetX, TargetY, pos.z + TargetZ), Quaternion.identity);
+					Destroy (obj, disappearanceTime);
 				}else{
-					Instantiate (Target, new Vector3 (pos.x + TargetX, TargetY, pos.z + TargetZ), Quaternion.identity);
+					GameObject obj2 = (GameObject)Instantiate 
+						(Target, new Vector3 (pos.x + TargetX, TargetY, pos.z + TargetZ), Quaternion.identity);
+					Destroy (obj2,disappearanceTime);
 				}
 			}
 			timeElapsed = 0.0f;
@@ -61,7 +72,6 @@ public class F_NewTargetCreate : MonoBehaviour {
 
 	public void FlagDown(){
 		Flag = 0;
-		Debug.Log ("フラグダウン");
+		//Debug.Log ("フラグダウン");
 	}
-
 }
