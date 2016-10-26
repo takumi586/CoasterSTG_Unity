@@ -6,12 +6,13 @@ public class F_BalloonEvent : MonoBehaviour {
 	public GameObject Balloon;
 	public GameObject BalloonRare;
 	public float Timing;
-	public GameObject BalloonPoint1;
-	public GameObject BalloonPoint2;
-	public int n1;
-	public int n2;
-	public float DestroyTime;
+	public GameObject BalloonPoint;
+	public int number;
 
+	//何回生成するか
+	public int count;
+	//次に出る秒数
+	public float NextTime;
 
 	public void Start(){
 	}
@@ -19,26 +20,28 @@ public class F_BalloonEvent : MonoBehaviour {
 	void OnTriggerEnter(Collider other) {
 		if (other.gameObject.tag == "N_Tram") {
 			Invoke ("BalloonCreate", Timing);
+			count--;
+			float TimeAdd = Timing;
+			while (count > 0) {
+				TimeAdd += NextTime;
+				Invoke ("BalloonCreate", TimeAdd);
+				count--;
+			}
+			Destroy (gameObject,TimeAdd);
 		}
 	}
 
-	public void FixedUpdate(){
+	public void Update(){
 	}
 
 	public void BalloonCreate(){
-		for (int i = 0; i < n1; i++) {
-			float Angle = (float)360 / n1;
+
+		for (int i = 0; i < number; i++) {
+			float Angle = (float)360 / number;
 			transform.Rotate(new Vector3(0f,Angle,0f));
-			Vector3 pos1 = BalloonPoint1.transform.position;
-			Instantiate (Balloon, pos1, Quaternion.identity);
+			Vector3 pos = BalloonPoint.transform.position;
+			Instantiate (Balloon, pos, Quaternion.identity);
 		}
-		for (int i = 0; i < n2; i++) {
-			float Angle = (float)360 / n2;
-			transform.Rotate(new Vector3(0f,Angle,0f));
-			Vector3 pos2 = BalloonPoint2.transform.position;
-			Instantiate (Balloon, pos2, Quaternion.identity);
-		}
-		Destroy (gameObject);
 
 	}
 
