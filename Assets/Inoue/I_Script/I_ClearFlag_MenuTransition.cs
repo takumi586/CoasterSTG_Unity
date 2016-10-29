@@ -14,8 +14,8 @@ public class I_ClearFlag_MenuTransition : MonoBehaviour {
 		if (cnt >= clearFlame) {
 			clearFlag = true;
 		}
-		if (clearFlag && nagaosiFlame >= nagaosiCnt) {
-			// SceneManager.LoadScene ("");
+		if (clearFlag && nagaosiCnt >= nagaosiFlame) {
+			SceneManager.LoadScene ("F_Title");
 		}
 
 
@@ -25,5 +25,6 @@ public class I_ClearFlag_MenuTransition : MonoBehaviour {
 			nagaosiCnt = 0;
 		}
 		cnt++;
+		Debug.Log (nagaosiCnt);
 	}
 }
