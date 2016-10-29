@@ -8,28 +8,34 @@ public class I_ClearMessage : MonoBehaviour {
 
 	private TextMesh ClearText;
 	private bool messageDisplay = false;
-	private bool clearFlag = true;
 	private I_Score s;
+
+	private GameObject clearObject;
+	private I_ClearFlag_MenuTransition clearFlag;
 
 	void Start() {
 		ClearText = GetComponent<TextMesh>();
 		ClearText.text = "";
 		s = GameObject.Find ("ScoreDisplay").GetComponent<I_Score> ();
+
+		clearObject = GameObject.Find ("ClearFlag_MenuTransition");
+		clearFlag = clearObject.GetComponent<I_ClearFlag_MenuTransition>();
 	}
 
 	void Update() {
-		if (!messageDisplay && clearFlag) {
+		if (!messageDisplay && clearFlag.clearFlag) {
 			int score = s.getScore();
 			for (int i = 0; i < num; i++) {
 				if (tensu[i] <= score && score <= tensu[i+1]) {
 					ScoreMessage(score);
 					ClearText.text += message[i];
 					messageDisplay = true;
+					break;
 				}
 			}
 			if (score < tensu[0]) {
 				ScoreMessage(score);
-				ClearText.text += "...うーん... " + tensu[0] + "を下回るはずないんだけどなぁ...\n";
+				ClearText.text += "...うーん... " + tensu[0] + "点 を下回るはずないんだけどなぁ...\n";
 				ClearText.text +=  "もしこのメッセージが表示されたら、スタッフに声をかけてね！";
 				messageDisplay = true;
 			}
@@ -43,6 +49,6 @@ public class I_ClearMessage : MonoBehaviour {
 
 	private void ScoreMessage(int score) {
 		ClearText.text = "クリアおめでとう！\n";
-		ClearText.text += "あなたの点数は " + score + "点でした！\n\n";
+		ClearText.text += "あなたの点数は " + score + "点 でした！\n\n";
 	}
 }
