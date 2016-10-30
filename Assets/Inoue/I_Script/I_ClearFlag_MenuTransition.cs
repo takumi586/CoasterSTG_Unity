@@ -15,7 +15,7 @@ public class I_ClearFlag_MenuTransition : MonoBehaviour {
 			clearFlag = true;
 		}
 		if (clearFlag && nagaosiCnt >= nagaosiFlame) {
-			SceneManager.LoadScene ("F_Title");
+			SceneManager.LoadScene ("kitayamasai_Title");
 		}
 
 
