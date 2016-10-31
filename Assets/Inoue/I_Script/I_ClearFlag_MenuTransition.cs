@@ -25,6 +25,6 @@ public class I_ClearFlag_MenuTransition : MonoBehaviour {
 			nagaosiCnt = 0;
 		}
 		cnt++;
-		Debug.Log (nagaosiCnt);
+		Debug.Log (cnt);
 	}
 }
